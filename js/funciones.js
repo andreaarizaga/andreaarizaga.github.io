@@ -2,14 +2,16 @@ var reinasPorColocar = 8;
 var reinasColocadas = 0;
 
 function colocarReina(celda) {
+  /*alert("Le dieron click a la celda"+celda);*/
+
   if (window.getComputedStyle(celda).backgroundImage == "none") {
     if (reinasColocadas < 8) {
       celda.style = "background-image: url(./img/reinanegra.png); background-size:cover;";
       var renglon = celda.parentElement.rowIndex;
       var columna = celda.cellIndex;
+      /* Bloqueamos renglon */
       var tablero = document.getElementById("tabla");
-
-      // Bloquear la fila y la columna
+      //alert(renglon + " " + columna);
       for (let i = 0; i < 8; i++) {
         if (columna != i) {
           tablero.rows[renglon].cells[i].removeAttribute("onclick");
@@ -20,30 +22,51 @@ function colocarReina(celda) {
           tablero.rows[i].cells[columna].style.backgroundColor = "#ff0000";
         }
       }
+      /* Recorremos diagonales */
 
-      // Bloquear las diagonales
-      for (let i = 1; i < 8; i++) {
-        if (renglon - i >= 0 && columna - i >= 0) {
-          tablero.rows[renglon - i].cells[columna - i].removeAttribute("onclick");
-          tablero.rows[renglon - i].cells[columna - i].style.backgroundColor = "#ff0000";
-        }
-        if (renglon - i >= 0 && columna + i < 8) {
-          tablero.rows[renglon - i].cells[columna + i].removeAttribute("onclick");
-          tablero.rows[renglon - i].cells[columna + i].style.backgroundColor = "#ff0000";
-        }
-        if (renglon + i < 8 && columna - i >= 0) {
-          tablero.rows[renglon + i].cells[columna - i].removeAttribute("onclick");
-          tablero.rows[renglon + i].cells[columna - i].style.backgroundColor = "#ff0000";
-        }
-        if (renglon + i < 8 && columna + i < 8) {
-          tablero.rows[renglon + i].cells[columna + i].removeAttribute("onclick");
-          tablero.rows[renglon + i].cells[columna + i].style.backgroundColor = "#ff0000";
-        }
+      var r = renglon;
+      var c = columna;
+
+      while (r >= 0 && c < 8) {
+
+        tablero.rows[r].cells[c].style.backgroundColor = "#ff0000";
+        r--;
+        c++;
+      }
+
+      r = renglon;
+      c = columna;
+
+      while (c >= 0 && r < 8) {
+
+        tablero.rows[r].cells[c].style.backgroundColor = "#ff0000";
+        r++;
+        c--;
+      }
+
+      r = renglon;
+      c = columna;
+
+      while (r >= 0 && c >= 0) {
+        tablero.rows[r].cells[c].style.backgroundColor = "#ff0000";
+        r--;
+        c--;
+      }
+
+      r = renglon;
+      c = columna;
+
+      while (r < 8 && c < 8) {
+        tablero.rows[r].cells[c].style.backgroundColor = "#ff0000";
+        r++;
+        c++;
       }
 
       reinasPorColocar--;
       reinasColocadas++;
-    } else {
+    }
+
+  } else {
     celda.style = "background-image: none";
     var renglon = celda.parentElement.rowIndex;
     var columna = celda.cellIndex;
