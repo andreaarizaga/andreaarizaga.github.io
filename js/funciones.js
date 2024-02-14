@@ -1,1 +1,375 @@
-var reinasPorColocar=8,reinasColocadas=0;function colocarReina(e){if("none"==window.getComputedStyle(e).backgroundImage){if(reinasColocadas<8){e.style="background-image: url(./img/reinanegra.png); background-size:cover;";var r=e.parentElement.rowIndex,a=e.cellIndex,n=document.getElementById("tabla");for(let o=0;o<8;o++)a!=o&&(n.rows[r].cells[o].removeAttribute("onclick"),n.rows[r].cells[o].style.backgroundColor="#ff0000"),r!=o&&(n.rows[o].cells[a].removeAttribute("onclick"),n.rows[o].cells[a].style.backgroundColor="#ff0000");for(var g=r,l=a;g>=0&&l<8;)n.rows[g].cells[l].style.backgroundColor="#ff0000",g--,l++;for(g=r,l=a;l>=0&&g<8;)n.rows[g].cells[l].style.backgroundColor="#ff0000",g++,l--;for(g=r,l=a;g>=0&&l>=0;)n.rows[g].cells[l].style.backgroundColor="#ff0000",g--,l--;for(g=r,l=a;g<8&&l<8;)n.rows[g].cells[l].style.backgroundColor="#ff0000",g++,l++;reinasPorColocar--,reinasColocadas++}}else{e.style="background-image: none";var r=e.parentElement.rowIndex,a=e.cellIndex,n=document.getElementById("tabla");for(let s=0;s<8;s++)n.rows[r].cells[s].setAttribute("onclick","colocarReina(this)"),n.rows[r].cells[s].style.backgroundColor="",n.rows[s].cells[a].setAttribute("onclick","colocarReina(this)"),n.rows[s].cells[a].style.backgroundColor="";reinasPorColocar++,reinasColocadas--}document.getElementById("reinasColoca").innerHTML="Reinas por colocar: "+reinasPorColocar,document.getElementById("reinasColoca1").innerHTML="Reinas Colocadas: "+reinasColocadas}function reiniciar(){var e=document.getElementById("tabla").getElementsByTagName("td");for(let r=0;r<e.length;r++)e[r].style.backgroundImage="none",e[r].style.backgroundColor="",e[r].setAttribute("onclick","colocarReina(this)");reinasPorColocar=8,reinasColocadas=0,document.getElementById("reinasColoca1").innerHTML="Reinas Colocadas: "+reinasColocadas,document.getElementById("reinasColoca").innerHTML="Reinas por colocar: "+reinasPorColocar}function solucion1(e){var r=document.getElementById("tabla");switch(e){case"1":r.rows[0].cells[3].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[1].cells[6].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[2].cells[2].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[3].cells[7].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[4].cells[1].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[5].cells[4].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[6].cells[0].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[7].cells[5].style="background-image: url(./img/reinanegra.png); background-size:cover;";break;case"2":r.rows[0].cells[4].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[1].cells[1].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[2].cells[3].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[3].cells[6].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[4].cells[2].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[5].cells[7].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[6].cells[5].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[7].cells[0].style="background-image: url(./img/reinanegra.png); background-size:cover;";break;case"3":r.rows[0].cells[3].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[1].cells[1].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[2].cells[6].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[3].cells[2].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[4].cells[5].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[5].cells[7].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[6].cells[4].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[7].cells[0].style="background-image: url(./img/reinanegra.png); background-size:cover;";break;case"4":r.rows[0].cells[3].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[1].cells[5].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[2].cells[7].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[3].cells[2].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[4].cells[0].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[5].cells[6].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[6].cells[4].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[7].cells[1].style="background-image: url(./img/reinanegra.png); background-size:cover;";break;case"5":r.rows[0].cells[2].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[1].cells[5].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[2].cells[7].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[3].cells[0].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[4].cells[3].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[5].cells[6].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[6].cells[4].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[7].cells[1].style="background-image: url(./img/reinanegra.png); background-size:cover;";break;case"6":r.rows[0].cells[4].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[1].cells[2].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[2].cells[7].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[3].cells[3].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[4].cells[6].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[5].cells[0].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[6].cells[5].style="background-image: url(./img/reinanegra.png); background-size:cover;",r.rows[7].cells[1].style="background-image: url(./img/reinanegra.png); background-size:cover;";break;default:alert("Esa solucion no te la ando manejando")}}
+var reinasPorColocar = 8;
+var reinasColocadas = 0;
+
+function colocarReina(celda) {
+  /*alert("Le dieron click a la celda"+celda);*/
+
+  if (window.getComputedStyle(celda).backgroundImage == "none") {
+    if (reinasColocadas < 8) {
+      celda.style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      var renglon = celda.parentElement.rowIndex;
+      var columna = celda.cellIndex;
+      /* Bloqueamos renglon */
+      var tablero = document.getElementById("tabla");
+      //alert(renglon + " " + columna);
+      for (let i = 0; i < 8; i++) {
+        if (columna != i) {
+          tablero.rows[renglon].cells[i].removeAttribute("onclick");
+          tablero.rows[renglon].cells[i].style.backgroundColor = "#ff0000";
+        }
+        if (renglon != i) {
+          tablero.rows[i].cells[columna].removeAttribute("onclick");
+          tablero.rows[i].cells[columna].style.backgroundColor = "#ff0000";
+        }
+      }
+      /* Recorremos diagonales */
+
+      var r = renglon;
+      var c = columna;
+
+      while (r >= 0 && c < 8) {
+
+        tablero.rows[r].cells[c].style.backgroundColor = "#ff0000";
+        r--;
+        c++;
+      }
+
+      r = renglon;
+      c = columna;
+
+      while (c >= 0 && r < 8) {
+
+        tablero.rows[r].cells[c].style.backgroundColor = "#ff0000";
+        r++;
+        c--;
+      }
+
+      r = renglon;
+      c = columna;
+
+      while (r >= 0 && c >= 0) {
+        tablero.rows[r].cells[c].style.backgroundColor = "#ff0000";
+        r--;
+        c--;
+      }
+
+      r = renglon;
+      c = columna;
+
+      while (r < 8 && c < 8) {
+        tablero.rows[r].cells[c].style.backgroundColor = "#ff0000";
+        r++;
+        c++;
+      }
+
+      reinasPorColocar--;
+      reinasColocadas++;
+    }
+
+  } else {
+    celda.style = "background-image: none";
+    var renglon = celda.parentElement.rowIndex;
+    var columna = celda.cellIndex;
+    /* Bloqueamos renglon */
+    var tablero = document.getElementById("tabla");
+    //alert(renglon + " " + columna);
+    for (let i = 0; i < 8; i++) {
+      tablero.rows[renglon].cells[i].setAttribute("onclick", "colocarReina(this)");
+      tablero.rows[renglon].cells[i].style.backgroundColor = "";
+      tablero.rows[i].cells[columna].setAttribute("onclick", "colocarReina(this)");
+      tablero.rows[i].cells[columna].style.backgroundColor = "";
+    }
+    reinasPorColocar++;
+    reinasColocadas--;
+  }
+  document.getElementById("reinasColoca").innerHTML = "Reinas por colocar: " + reinasPorColocar;
+  document.getElementById("reinasColoca1").innerHTML = "Reinas Colocadas: " + reinasColocadas;
+
+}
+
+function reiniciar() {
+  var celdas = document.getElementById("tabla").getElementsByTagName("td");
+  for (let i = 0; i < celdas.length; i++) {
+    celdas[i].style.backgroundImage = "none"; // Establecer backgroundImage como una cadena vacía
+    celdas[i].style.backgroundColor = ""; // Restablecer el color de fondo
+    celdas[i].setAttribute("onclick", "colocarReina(this)"); // Habilitar la función de colocarReina nuevamente
+  }
+  reinasPorColocar = 8; // Restablecer el contador de reinas por colocar
+  reinasColocadas = 0; // Restablecer el contador de reinas colocadas
+  document.getElementById("reinasColoca1").innerHTML = "Reinas Colocadas: " + reinasColocadas; // Actualizar el contador de reinas colocadas
+  document.getElementById("reinasColoca").innerHTML = "Reinas por colocar: " + reinasPorColocar; // Actualizar el contador de reinas por colocar
+}
+
+function solucion1(valor) {
+
+  var celdas = document.getElementById("tabla");
+
+  switch (valor) {
+    case "1":
+      celdas.rows[0].cells[3].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[1].cells[6].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[2].cells[2].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[3].cells[7].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[4].cells[1].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[5].cells[4].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[6].cells[0].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[7].cells[5].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      break;
+
+    case "2":
+      celdas.rows[0].cells[4].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[1].cells[1].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[2].cells[3].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[3].cells[6].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[4].cells[2].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[5].cells[7].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[6].cells[5].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[7].cells[0].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      break;
+
+    case "3":
+      celdas.rows[0].cells[3].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[1].cells[1].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[2].cells[6].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[3].cells[2].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[4].cells[5].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[5].cells[7].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[6].cells[4].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[7].cells[0].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      break;
+
+    case "4":
+      celdas.rows[0].cells[3].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[1].cells[5].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[2].cells[7].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[3].cells[2].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[4].cells[0].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[5].cells[6].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[6].cells[4].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[7].cells[1].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      break;
+
+    case "5":
+      celdas.rows[0].cells[2].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[1].cells[5].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[2].cells[7].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[3].cells[0].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[4].cells[3].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[5].cells[6].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[6].cells[4].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[7].cells[1].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      break;
+
+    case "6":
+      celdas.rows[0].cells[4].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[1].cells[2].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[2].cells[7].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[3].cells[3].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[4].cells[6].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[5].cells[0].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[6].cells[5].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[7].cells[1].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      break;
+
+    default:
+      alert("Esa solucion no te la ando manejando");
+      break;
+  }
+}
+
+
+
+/* var reinasPorColocar = 8;
+var reinasColocadas = 0;
+
+function colocarReina(celda) {
+  alert("Le dieron click a la celda"+celda);
+
+  if (window.getComputedStyle(celda).backgroundImage === "none") {
+    if (reinasColocadas < 8) {
+      celda.style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      var renglon = celda.parentElement.rowIndex;
+      var columna = celda.cellIndex;
+       Bloqueamos renglon 
+      var tablero = document.getElementById("tabla");
+      //alert(renglon + " " + columna);
+      for (let i = 0; i < 8; i++) {
+        if (columna != i) {
+          tablero.rows[renglon].cells[i].removeAttribute("onclick");
+          tablero.rows[renglon].cells[i].style.backgroundColor = "#ff0000";
+        }
+        if (renglon != i) {
+          tablero.rows[i].cells[columna].removeAttribute("onclick");
+          tablero.rows[i].cells[columna].style.backgroundColor = "#ff0000";
+        }
+      }
+       Recorremos diagonales 
+
+      var r = renglon;
+      var c = columna;
+
+      while (r >= 0 && c < 8) {
+
+        tablero.rows[r].cells[c].style.backgroundColor = "#ff0000";
+        r--;
+        c++;
+      }
+
+      r = renglon;
+      c = columna;
+
+      while (c >= 0 && r < 8) {
+
+        tablero.rows[r].cells[c].style.backgroundColor = "#ff0000";
+        r++;
+        c--;
+      }
+
+      r = renglon;
+      c = columna;
+
+      while (r >= 0 && c >= 0) {
+        tablero.rows[r].cells[c].style.backgroundColor = "#ff0000";
+        r--;
+        c--;
+      }
+
+      r = renglon;
+      c = columna;
+
+      while (r < 8 && c < 8) {
+        tablero.rows[r].cells[c].style.backgroundColor = "#ff0000";
+        r++;
+        c++;
+      }
+
+      reinasPorColocar--;
+      reinasColocadas++;
+    }
+
+  } else {
+    celda.style.backgroundImage = "none"; 
+    celda.style.backgroundColor = "";
+    var renglon = celda.parentElement.rowIndex;
+    var columna = celda.cellIndex;
+    var tablero = document.getElementById("tabla");
+
+    // Restablecer el color de fondo de la celda y habilitar el onclick
+    celda.setAttribute("onclick", "colocarReina(this)");
+
+    // Restablecer el color de fondo de la fila y la columna
+    for (let i = 0; i < 8; i++) {
+      tablero.rows[renglon].cells[i].setAttribute("onclick", "colocarReina(this)");
+      tablero.rows[renglon].cells[i].style.backgroundColor = "";
+      tablero.rows[i].cells[columna].setAttribute("onclick", "colocarReina(this)");
+      tablero.rows[i].cells[columna].style.backgroundColor = "";
+    }
+
+    // Restablecer el color de fondo de las diagonales
+    for (let i = 0; i < 8; i++) {
+      if (renglon - i >= 0 && columna + i < 8) {
+        tablero.rows[renglon - i].cells[columna + i].style.backgroundColor = "";
+      }
+      if (renglon + i < 8 && columna - i >= 0) {
+        tablero.rows[renglon + i].cells[columna - i].style.backgroundColor = "";
+      }
+      if (renglon - i >= 0 && columna - i >= 0) {
+        tablero.rows[renglon - i].cells[columna - i].style.backgroundColor = "";
+      }
+      if (renglon + i < 8 && columna + i < 8) {
+        tablero.rows[renglon + i].cells[columna + i].style.backgroundColor = "";
+      }
+    }
+
+    reinasPorColocar++;
+    reinasColocadas--;
+  }
+  document.getElementById("reinasColoca").innerHTML = "Reinas por colocar: " + reinasPorColocar;
+  document.getElementById("reinasColoca1").innerHTML = "Reinas Colocadas: " + reinasColocadas;
+
+}
+
+function reiniciar(cont){
+  var celdas=document.getElementById("tabla").getElementsByTagName("td");
+  for (let i = 0; i < celdas.length; i++) {
+      celdas[i].style="backgroundImage:none";    
+  }
+  contador = cont;
+  document.getElementById("div_contador").innerHTML="reinascolocadas:"+ contador;
+}
+function solucion1(valor) {
+
+  var celdas = document.getElementById("tabla");
+
+  switch (valor) {
+    case "1":
+      celdas.rows[0].cells[3].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[1].cells[6].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[2].cells[2].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[3].cells[7].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[4].cells[1].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[5].cells[4].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[6].cells[0].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[7].cells[5].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      break;
+
+    case "2":
+      celdas.rows[0].cells[4].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[1].cells[1].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[2].cells[3].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[3].cells[6].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[4].cells[2].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[5].cells[7].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[6].cells[5].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[7].cells[0].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      break;
+
+    case "3":
+      celdas.rows[0].cells[3].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[1].cells[1].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[2].cells[6].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[3].cells[2].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[4].cells[5].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[5].cells[7].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[6].cells[4].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[7].cells[0].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      break;
+
+    case "4":
+      celdas.rows[0].cells[3].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[1].cells[5].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[2].cells[7].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[3].cells[2].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[4].cells[0].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[5].cells[6].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[6].cells[4].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[7].cells[1].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      break;
+
+    case "5":
+      celdas.rows[0].cells[2].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[1].cells[5].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[2].cells[7].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[3].cells[0].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[4].cells[3].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[5].cells[6].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[6].cells[4].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[7].cells[1].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      break;
+
+    case "6":
+      celdas.rows[0].cells[4].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[1].cells[2].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[2].cells[7].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[3].cells[3].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[4].cells[6].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[5].cells[0].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[6].cells[5].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      celdas.rows[7].cells[1].style = "background-image: url(./img/reinanegra.png); background-size:cover;";
+      break;
+
+    default:
+      alert("Esa solucion no te la ando manejando");
+      break;
+  }
+} */
