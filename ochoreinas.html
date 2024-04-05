@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocho Reinas</title>
+    
+    <style>
+        table{
+            border:1px solid;
+            border-collapse: collapse;
+            
+        }
+        tr{
+            border:1px solid;
+            border-collapse: collapse;
+            
+        }
+        td{
+            border:1px solid;
+            border-collapse: collapse;
+            width:75px;
+            height: 75px;
+        }
+        tr:nth-child(even) td:nth-child(even), tr:nth-child(odd) td:nth-child(odd){
+            background-color: black;
+            
+        }
+        tr:nth-child(odd) td:nth-child(even), tr:nth-child(odd) td:nth-child(even){
+            background-color: rgb(11, 73, 92);
+            
+        }
+        tr:nth-child(even) td:nth-child(odd), tr:nth-child(odd) td:nth-child(even){
+            background-color: rgb(57, 129, 151);
+            
+        }
+        div  {
+            font-size: xx-large;
+        }
+                
+        /* CSS  )zm)7V@s2Tz^5$$ptbAv*/
+        .button-52 {
+          font-size: 22px;
+          font-weight: 200;
+          letter-spacing: 1px;
+          padding: 13px 20px 13px;
+          outline: 0;
+          border: 1px solid black;
+          cursor: pointer;
+          position: relative;
+          background-color: rgba(0, 0, 0, 0);
+          user-select: none;
+          -webkit-user-select: none;
+          touch-action: manipulation;
+          margin-right: 15px;
+        }
+        
+        .button-52:after {
+          content: "";
+          background-color: rgba(59, 138, 161);
+          width: 100%;
+          z-index: -1;
+          position: absolute;
+          height: 100%;
+          top: 7px;
+          left: 7px;
+          transition: 0.3s;
+        }
+        
+        .button-52:hover:after {
+          top: 0px;
+          left: 0px;
+        }
+        
+        @media (min-width: 768px) {
+          .button-52 {
+            padding: 13px 50px 13px;
+          }
+        }
+
+        .container {
+            font-family: arial;
+            font-size: 24px;            
+            /* Center child horizontally*/
+            display: flex;
+            justify-content: center;
+          }
+    </style>
+    
+    <script>
+        var contador=0;
+        var board = Array.from(Array(8), () => new Array(2));
+        createBoard(board)
+        function createBoard(array){
+            for(let i=0; i<8;i++){
+                for(let j=0; j<8;j++){
+                    array[i][j]=0;
+                }
+            }
+        }
+        
+        function celdaclick(ana){
+            //Este if valida si la celda tiene imagen de fondo o no
+            if(contador==8){
+                alert("Felicidadesss Ganaste, encontraste una de las 92 soluciones");
+            }
+            if((window.getComputedStyle(ana).backgroundImage)=="none" ) {
+                if(contador != 8 && storeCoordinate(ana.parentNode.rowIndex,ana.cellIndex, board)==true){
+                    ana.style="background-image:url(./2x1.png); background-size: cover;";
+                    if(contador != 8){
+                        contador++;                        
+                    }
+                     
+                    
+        
+                } 
+                
+                
+            }
+            else {
+                contador--;
+                removeCoordinate(ana.parentNode.rowIndex,ana.cellIndex, board)
+                ana.style="background-image:none;";
+            }
+            document.getElementById("div_contador").innerHTML="Reinas Colocadas: "+ contador;
+            
+        }
+
+        function storeCoordinate(xVal, yVal, array) {     
+            if(atacando(xVal, yVal, array) == false && array[xVal][yVal]== 0){
+                array[xVal][yVal]=1
+                return true
+            }
+            else{
+                return false
+            }
+            
+        }
+        function atacando(xVal, yVal, array){
+            for(let i = 0; i<8; i++){
+                if(array[i][yVal]==1){ // columnas
+                    console.log("Te estan atacando")
+                    return true
+                }
+                
+                for(let j = 0; j<8; j++){
+                    if((i-xVal)==(j-yVal) || (i-xVal)== -(j-yVal)){ //diagonales
+                        
+                        if(array[i][j]==1){
+                            console.log("Te estan atacando")
+                            return true
+                        }
+                    }
+                    if(array[xVal][j]==1){ // columnas
+                        console.log("Te estan atacando")
+                            return true
+                    }
+                    
+                }
+            }
+            return false
+        }
+
+        
+        function removeCoordinate(xVal, yVal, array) {
+            array[xVal][yVal]=0
+        }
+        
+
+        function mostrarBoard(){
+            for(let i = 0; i<8; i++){
+                console.log(board[i])
+             }
+        }
+
+        function simulacion(){
+            if(contador < 8){
+                alert("hola :D");
+            }
+            else{
+                alert("Adios :(")
+            }
+            
+            
+            
+        }
+        
+    
+        function reiniciar(cont){
+            var celdas=document.getElementById("tabla_ajedrez").getElementsByTagName("td");
+            for (let i = 0; i < celdas.length; i++) {
+                celdas[i].style="backgroundImage:none";    
+            }
+            contador = cont;
+            document.getElementById("div_contador").innerHTML="Reinas Colocadas: "+ contador;
+            createBoard(board);
+        }
+
+        function solucion1(){
+            reiniciar(8);
+            var celdas=document.getElementById("tabla_ajedrez");
+            celdas.rows[0].cells[4].style="background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celdas.rows[1].cells[1].style="background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celdas.rows[2].cells[3].style="background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celdas.rows[3].cells[6].style="background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celdas.rows[4].cells[2].style="background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celdas.rows[5].cells[7].style="background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celdas.rows[6].cells[5].style="background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celdas.rows[7].cells[0].style="background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            
+        }
+
+        function solucion2(){
+            reiniciar(8);
+            var celdas=document.getElementById("tabla_ajedrez");
+            celdas.rows[0].cells[4].style="background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celdas.rows[1].cells[2].style="background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celdas.rows[2].cells[7].style="background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celdas.rows[3].cells[3].style="background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celdas.rows[4].cells[6].style="background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celdas.rows[5].cells[0].style="background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celdas.rows[6].cells[5].style="background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celdas.rows[7].cells[1].style="background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            
+        }
+    </script>
+</head>
+<body bgcolor="#787d79">
+    <div class="container">
+        <H1 style="color: white;">Problema de las ocho reinas</H1>
+        
+    </div>
+    
+    <div class="container">
+        <table id="tabla_ajedrez">
+        <tr>
+            <td onclick="celdaclick(this)"> </td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+        </tr>
+
+        <tr>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+        </tr>
+        <tr>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+        </tr>
+        <tr>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+        </tr>
+        <tr>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+        </tr>
+        <tr>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+        </tr>
+        <tr>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+        </tr>
+        <tr>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+            <td onclick="celdaclick(this)"></td>
+        </tr>
+    </table>
+    </div>
+    <br>
+    
+    <div class="container" id="div_contador" style="color: white;">
+        Reinas colocadas: 0
+    </div>
+    <br>
+    
+    <div class="container">
+
+        <button class="button-52" role="button" onclick="simulacion()">
+            Simulación
+        </button>
+        <button class="button-52" onclick="reiniciar(0)">
+            Reiniciar
+        </button>
+        <button class="button-52" onclick="solucion1()">
+            Solución 1
+        </button>
+        <button class="button-52" onclick="solucion2()">
+            Solución 2
+        </button>
+        <button class="button-52" onclick="mostrarBoard()">
+            Mostrar tablero
+        </button>
+        
+    </div>
+    
+   
+
+</body>
+</html>
